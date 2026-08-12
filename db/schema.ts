@@ -32,3 +32,13 @@ export const racesTable = pgTable("races", {
 }, (table) => [
   unique().on(table.year, table.round)
 ]);
+
+export const constructorResultsTable = pgTable("constructor_results", {
+  id: integer().primaryKey(),
+  raceId: integer("race_id").notNull().references(() => racesTable.id),
+  constructorId: integer("constructor_id").notNull().references(() => constructorsTable.id),
+  points: doublePrecision().notNull(), 
+}, (table) => [
+  unique().on(table.raceId, table.constructorId)
+]);
+
