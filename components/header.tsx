@@ -9,7 +9,7 @@ export default function Header() {
           Formula one constructor index
         </h1>
         <p className="mt-3 max-w-2xl text-muted-foreground">
-          Historical performance across Formula 1 since 1950, ranked by
+          Historical performance across Formula one since 1950, ranked by
           championships, race wins, podiums, and long-term dominance.
         </p>
       </div>
