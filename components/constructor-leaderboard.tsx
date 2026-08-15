@@ -2,7 +2,7 @@ import { getConstructorTotalPoints } from "@/lib/queries/getConstructorTotalPoin
 
 export default async function ConstructorLeaderboard() {
   const totalPoints = await getConstructorTotalPoints();
-  console.log(totalPoints);
+  // console.log(totalPoints);
 
   return (
     <div className="overflow-hidden rounded-3xl border border-border bg-card">
@@ -20,7 +20,8 @@ export default async function ConstructorLeaderboard() {
               {index + 1}
             </span>
             <div className="">
-              <p className="font-medium text-lg">{team.name}</p>
+              <p className="font-medium">{team.name}</p>
+              <p className="text-sm text-muted-foreground">{`${team.firstRace?.substring(0, 4)}-${team.lastRace?.substring(0, 4)}`}</p>
             </div>
           </div>
           <div className="text-right">

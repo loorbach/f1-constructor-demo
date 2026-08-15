@@ -34,7 +34,7 @@ export const racesTable = pgTable("races", {
 ]);
 
 export const constructorResultsTable = pgTable("constructor_results", {
-  id: integer().primaryKey(),
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
   raceId: integer("race_id").notNull().references(() => racesTable.id),
   constructorId: integer("constructor_id").notNull().references(() => constructorsTable.id),
   points: doublePrecision().notNull(), 
@@ -42,3 +42,10 @@ export const constructorResultsTable = pgTable("constructor_results", {
   unique().on(table.raceId, table.constructorId)
 ]);
 
+export const constructorAliasMap = pgTable("constructor_alias_map", {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  aliasConstructorId: integer("alias_constructor_id").notNull().unique().references(() => constructorsTable.id),
+  primaryConstructorId: integer("primary_constructor_id").notNull().references(() => constructorsTable.id)
+}, (table) => [
+  unique().on(table.primaryConstructorId, table.aliasConstructorId)
+])
