@@ -1,13 +1,13 @@
 import { getConstructorTotalPoints } from "@/lib/queries/getConstructorTotalPoints";
+import { cn } from "@/lib/utils";
 
 export default async function ConstructorLeaderboard() {
   const totalPoints = await getConstructorTotalPoints();
-  // console.log(totalPoints);
 
   return (
-    <div className="overflow-hidden rounded-3xl border border-border bg-card">
-      <div className="flex justify-between text-center border-b border-border px-6 py-4 text-sm font-medium text-muted-foreground">
-        <p>Top constructors of all time</p>
+    <div className="overflow-hidden rounded-2xl border border-border bg-card">
+      <div className="flex items-center justify-between border-b border-border px-6 py-4 text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+        <p>Constructor</p>
         <p>Points</p>
       </div>
       {totalPoints.map((team, index) => (
@@ -16,7 +16,12 @@ export default async function ConstructorLeaderboard() {
           className="flex items-center justify-between px-6 py-5 transition hover:bg-secondary/50"
         >
           <div className="flex items-center gap-4">
-            <span className="min-w-5 text-lg font-semibold text-primary">
+            <span
+              className={cn(
+                "min-w-5 tabular-nums text-sm font-medium",
+                index === 0 ? "text-primary" : "text-muted-foreground",
+              )}
+            >
               {index + 1}
             </span>
             <div className="">
@@ -25,7 +30,9 @@ export default async function ConstructorLeaderboard() {
             </div>
           </div>
           <div className="text-right">
-            <p className="text-secondary-foreground">{team.totalPoints}</p>
+            <p className="tabular-nums font-medium">
+              {team.totalPoints.toLocaleString()}
+            </p>
           </div>
         </div>
       ))}

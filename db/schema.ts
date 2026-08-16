@@ -41,6 +41,7 @@ export const constructorResultsTable = pgTable("constructor_results", {
 }, (table) => [
   unique().on(table.raceId, table.constructorId)
 ]);
+//TODO: some results missing in dataset
 
 export const constructorAliasMap = pgTable("constructor_alias_map", {
   id: integer().primaryKey().generatedAlwaysAsIdentity(),

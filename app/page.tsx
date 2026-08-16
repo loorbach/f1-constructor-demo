@@ -14,16 +14,9 @@ export default function Home() {
                 Constructor rankings
               </h3>
               <p className="text-muted-foreground">
-                Sorted by championship success
+                Sorted by all-time championship points.
               </p>
             </div>
-
-            <button
-              type="button"
-              className="text-sm font-medium text-primary hover:underline"
-            >
-              View methodology
-            </button>
           </div>
           <Suspense fallback={<div>Loading...</div>}>
             <ConstructorLeaderboard />
