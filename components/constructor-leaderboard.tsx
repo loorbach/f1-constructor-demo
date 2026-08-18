@@ -1,3 +1,5 @@
+import type { Route } from "next";
+import Link from "next/link";
 import { getConstructorTotalPoints } from "@/lib/queries/getConstructorTotalPoints";
 import { cn } from "@/lib/utils";
 
@@ -24,8 +26,12 @@ export default async function ConstructorLeaderboard() {
             >
               {index + 1}
             </span>
-            <div className="">
-              <p className="font-medium">{team.name}</p>
+            <div>
+              {/* TODO: make route easier to press */}
+              <Link href={`/constructor/${team.id}` as Route}>
+                <p className="font-medium">{team.name}</p>
+              </Link>
+
               <p className="text-sm text-muted-foreground">{`${team.firstRace?.substring(0, 4)}-${team.lastRace?.substring(0, 4)}`}</p>
             </div>
           </div>

@@ -11,7 +11,7 @@ export default function Home() {
           <div className="mb-6 flex items-end justify-between">
             <div>
               <h3 className="text-2xl font-semibold tracking-tight">
-                Constructor rankings
+                Top 10 constructors
               </h3>
               <p className="text-muted-foreground">
                 Sorted by all-time championship points.
